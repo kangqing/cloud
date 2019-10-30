@@ -1,0 +1,11 @@
+server:
+  port: 8202 #端口号
+spring:
+  application:
+    name: emp-service #服务名称
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/ #注册中心地址

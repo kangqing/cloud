@@ -1,0 +1,16 @@
+#######################
+#Master Eureka-server
+#######################
+server:
+  port: 8000 #指定运行端口
+spring:
+  application:
+    name: eureka-server #指定服务的名称
+eureka:
+  instance:
+    hostname: master #指定主机地址(slave1域名，需要在host中对应本机127.0.0.1)
+  client:
+    fetch-registry: true #
+    register-with-eureka: true #
+    service-url:
+      defaultZone: http://slave1:8002/eureka/,http://slave2:8003/eureka/ #主 注册中心，注册到 从1 和 从2 注册中心

@@ -1,0 +1,14 @@
+server:
+  port: 8101 #配置运行的端口
+spring:
+  application:
+    name: eureka-client #配置服务名称
+eureka:
+  client:
+    register-with-eureka: true #注册到 eureka注册中心
+    fetch-registry: true #获取注册实例列表
+    service-url:
+      #defaultZone: http://localhost:8001/eureka/ #配置注册中心的地址(单机版)
+      #defaultZone: http://master:8000/eureka/,http://slave1:8002/eureka/,http://slave2:8003/eureka/ #客户端同时配置到3个注册中心（一主二从）
+      defaultZone: http://yunqing:123456@localhost:8004/eureka/ #带security认证的配置到注册中心
+                                                                #格式  http://${username}:${password}@${hostname}:${port}/eureka/

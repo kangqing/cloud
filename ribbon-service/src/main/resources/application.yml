@@ -1,0 +1,15 @@
+server:
+  port: 8301 #端口号
+spring:
+  application:
+    name: ribbon-service #服务名称
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+
+#这是我声明的一个值，在springboot中通过@Value注解可调用
+service-url:
+  emp-service: http://emp-service # emp-service的调用路径，cloud的模块之间的调用要用服务名称

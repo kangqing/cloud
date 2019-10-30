@@ -1,0 +1,11 @@
+server:
+  port: 8501 #配置端口号
+spring:
+  application:
+    name: hystrix-dashboard #配置服务名称
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/ #注册到中心的地址

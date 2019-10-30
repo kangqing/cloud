@@ -1,0 +1,24 @@
+server:
+  port: 8402 #端口号
+spring:
+  application:
+    name: hystrix-service #服务名称
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/ #注册中心地址
+
+#这是我声明的一个值，在springboot中通过@Value注解可调用
+service-url:
+  emp-service: http://emp-service # emp-service的调用路径，cloud的模块之间的调用要用服务名称
+
+#Spring Cloud提供的Hystrix监控信息的endpoint ID是hystrix.stream，
+#为了看到对应的监控信息，还需要把Hystrix对应的endpoint以http的方式发布出来。
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
