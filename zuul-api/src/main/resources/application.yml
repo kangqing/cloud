@@ -1,0 +1,28 @@
+server:
+  port: 8801 #端口号
+spring:
+  application:
+    name: zuul-api #服务名称
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka/ #注册到注册中心的地址
+zuul:
+  ignored-headers: accept #也可以通过ignored-headers: 指定忽略的Header
+  #默认忽略的敏感Header为Cookie,Set-Cookie,Authorization，一旦设置了自定义忽略sensitive-headers，默认将失效
+  sensitive-headers: cache-control, upgrade-insecure-requests, user-agent #自定义忽略的敏感Header
+  #ignored-services: '*' #设置关闭了所有服务的默认路由前缀（即服务注册名那个前缀）
+  routes:
+    emp-service:
+      path: /api/** #给emp-service服务配置路由，默认路由为服务名
+      url: forward:/abc #扼杀旧的端点，在本地转发请求
+    feign-service:
+      path: /feign/** #给feign-service服务配置路由，默认路由为服务名
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'routes'
